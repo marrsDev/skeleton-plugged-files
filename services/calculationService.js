@@ -16,13 +16,7 @@ class CalculationService {
   }
 
   initializeWindowTypes() {
-    /*
-    Standardized Height Array Positions:
-    0 - jambP / pOutter (always full height)
-    1 - interLock / pInner (effective height)
-    2 - lockSection / pBidding (effective height)
-    3 - singleHeader / pInnerDiv (when present)
-    */
+
     return {
       // TYPE 1: 2 sliding panels w/o fx
       type1: this.createCalculator(
