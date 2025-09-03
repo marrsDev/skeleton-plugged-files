@@ -10,7 +10,7 @@ const WINDOW_CATEGORIES = {
   FOLDING: 'folding'
 };
 
-class CalculationService {
+class calculationService {
   constructor() {
     this.windowTypes = this.initializeWindowTypes();
   }
@@ -887,4 +887,4 @@ createCalculator(heightFns, widthFns, options) {
 }
 }
 
-module.exports = { createCalculator };
+module.exports = calculationService;
