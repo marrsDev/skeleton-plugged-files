@@ -880,6 +880,10 @@ createCalculator(heightFns, widthFns, options) {
         // Installation calculation
         installation: function() {
           return this.totals() * config.installPc;
+        },
+        // Total Cost calculation
+        totalCost: function() {
+          return this.totals() + this.installation();
         }
       };
     }
