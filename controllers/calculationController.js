@@ -1,5 +1,5 @@
 // controllers/calculationController.js
-const calculationService = require('../services/calculationServiceBridge.js');
+const { calculateWindowCost } = require('../services/calculationServiceBridge.js');
 
 // GET /api/calculations
 exports.getCalculations = (req, res) => {
@@ -8,12 +8,16 @@ exports.getCalculations = (req, res) => {
 };
 
 // POST /api/calculations
-exports.createCalculation = (req, res) => {
+exports.createCalculation = async (req, res) => {
   try {
-    const { input } = req.body;   // assuming input structure matches old service
-    const result = calculationService.calculate(input);
+    const input = req.body;
+    const calculationResult = await calculateWindowCost(input);
 
-    res.json({ success: true, result });
+    // Return just the result part without the extra nesting
+    res.json({
+      success: true,
+      ...calculationResult  // Spread the result properties directly
+    });
   } catch (err) {
     console.error("❌ Calculation error:", err);
     res.status(500).json({ success: false, error: err.message });
