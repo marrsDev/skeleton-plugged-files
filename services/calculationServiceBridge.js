@@ -1,5 +1,5 @@
 // services/calculationServiceBridge.js
-const CalculationService = require('./CalculationService');
+const CalculationService = require('./calculationService');
 
 // instantiate once
 const service = new CalculationService();
@@ -13,12 +13,15 @@ function resolveType(noOfPanels, fixedPartition) {
   const typeMap = {
     '2-noPartition': 'type1',
     '2-fixedBottom': 'type2',
+    '2-fixedTop': 'type2',
     '2-doubleFixed': 'type3',
     '3-noPartition': 'type4',
-    '3-fixedBottom': 'type5', 
+    '3-fixedBottom': 'type5',
+    '3-fixedTop': 'type5', 
     '3-doubleFixed': 'type6',
     '4-noPartition': 'type7',
     '4-fixedBottom': 'type8',
+    '4-fixedTop': 'type8',
     '4-doubleFixed': 'type9',
     // Add other mappings as needed
   };
@@ -61,7 +64,8 @@ async function calculateWindowCost(input) {
   return {
     breakdown: result,
     totals: result.totals?.(),
-    installation: result.installation?.()
+    installation: result.installation?.(),
+    totalCost: result.totalCost?.()
   };
 }
 
